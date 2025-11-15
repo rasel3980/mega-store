@@ -4,6 +4,13 @@ import { CartContext } from './CreateContext';
 const CartProvider = ({children}) => {
     const [carts,setCarts] = useState([]);
 
+
+    const handleDelete=(id)=>{
+        setCarts((prev)=>{
+            return prev.filter((product)=>product.id != id)
+        })
+    }
+
     const handleCheckOut =(id)=>{
         setCarts((prev)=>{
             return prev.map((prod)=>prod.id===id?{...prod, selected: !prod.selected}:prod)
@@ -40,6 +47,7 @@ const CartProvider = ({children}) => {
         increaseQuantity,
         decreaseQuantity,
         handleCheckOut,
+        handleDelete
     }
     return (
         <CartContext.Provider value={userInfo}>

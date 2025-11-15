@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { CartContext } from "../Context/CreateContext";
 
 const CartDetails = ({ cart }) => {
-  const { increaseQuantity, decreaseQuantity,handleCheckOut } = useContext(CartContext);
+  const { increaseQuantity, decreaseQuantity,handleCheckOut,handleDelete } = useContext(CartContext);
   return (
     <div>
         
@@ -25,9 +25,9 @@ const CartDetails = ({ cart }) => {
           </div>
         </div>
         
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center justify-center gap-7">
             <div>
-            <button className="px-4 py-1 cursor-pointer bg-red-600 text-white rounded">Cancel</button>
+            <button onClick={()=>handleDelete(cart.id)} className="px-4 py-1 cursor-pointer bg-red-600 text-white rounded">Cancel</button>
         </div>
           <div className="flex items-center justify-center gap-3">
             <button
